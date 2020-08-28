@@ -452,3 +452,17 @@ x <- 1:5 %<% c()
 ```
 
 [관련 추가 자료](https://gomguard.tistory.com/243)
+
+<br>
+
+## 5-3. filter()
+
+```R
+library(gapminder)
+
+filter(gapminder, country == "France")
+
+# 파이프 연산자 사용 시
+gapminder %>% filter(country == "France")
+```
+
