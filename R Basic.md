@@ -310,4 +310,35 @@ unique(gapminder[1])
 
 ```
 
-## 4-3-2. 
+<br>
+
+### 4-3-2. 조건 넣기
+
+방법은 크게 2가지
+
+subset을 쓰거나 인덱스에 조건식을 넣어 사용할 수 있다
+
+다만 이건 내장함수의 얘기이며 dpylr 처럼 다른 패키지를 쓰면 더 다양한 방법으로 조건을 넣을 수 있다
+
+```R	
+# 1. 인덱스를 이용
+# 반드시 끝에 쉼표(,) 를 넣어야 행을 리턴함
+gapminder[gapminder$country == "Afghanistan", ]
+
+# 2. subset 이용
+subset(gapminder$country == "Afghanistan")
+subset(gapminder, country == "Afghanistan")
+```
+
+[두 가지 방법 중 무엇을 택할 지에 대한 Stack Overflow 자료](https://stackoverflow.com/questions/9860090/why-is-better-than-subset)
+
+<br>
+
+```R
+#간략 실습 예제
+#countryList에 담긴 국가들의 데이터를 gapminder에서 뽑으시오
+countryList <- c("Afghanistan", "Bolivia", "Burundi", "Canada", "Cuba", "Egypt", "France", "Germany", "Iceland")
+
+
+```
+
