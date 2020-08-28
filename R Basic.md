@@ -336,9 +336,20 @@ subset(gapminder, country == "Afghanistan")
 
 ```R
 #간략 실습 예제
-#countryList에 담긴 국가들의 데이터를 gapminder에서 뽑으시오
+#주어진 countryList에 담긴 국가들의 데이터를 gapminder에서 뽑으시오
 countryList <- c("Afghanistan", "Bolivia", "Burundi", "Canada", "Cuba", "Egypt", "France", "Germany", "Iceland")
 
+```
 
+```R
+# 간략정답
+result <- NULL
+
+for (country in countryList) {
+    verifyRow <- gapminder[gapminder$country == country, ]
+	result <- rbind(result, verifyRow)
+}
+
+View(result)
 ```
 
