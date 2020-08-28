@@ -1,5 +1,3 @@
-[toc]
-
 
 
 # 1. 변수
@@ -322,7 +320,7 @@ unique(gapminder[1])
 
 subset을 쓰거나 인덱스에 조건식을 넣어 사용할 수 있다
 
-다만 이건 내장함수의 얘기이며 dpylr 처럼 다른 패키지를 쓰면 더 다양한 방법으로 조건을 넣을 수 있다
+다만 이건 내장함수의 얘기이며 dplyr 처럼 다른 패키지를 쓰면 더 다양한 방법으로 조건을 넣을 수 있다
 
 ```R	
 # 1. 인덱스를 이용
@@ -339,7 +337,7 @@ subset(gapminder, country == "Afghanistan")
 <br>
 
 ```R
-#간략 실습 예제
+#실습 예제
 #주어진 countryList에 담긴 국가들의 데이터를 gapminder에서 뽑으시오
 countryList <- c("Afghanistan", "Bolivia", "Burundi", "Canada", "Cuba", "Egypt", "France", "Germany", "Iceland")
 
@@ -357,3 +355,65 @@ for (country in countryList) {
 View(result)
 ```
 
+<br>
+
+### 4-3-3. 파생변수 생성
+
+특정 연산 등을 통해 데이터 프레임에 새로운 변수를 생성할 수 있는데 이를 파생변수라고 한다.
+
+```R
+student_name = c("김하늘", "정바다", "이철수", "김전원", "정호언")
+korean_midexam = c(55, 60, 85, 40, 67)
+math_midexam = c(80, 88, 55, 65, 90)
+eng_midexam = c(70, 72, 65, 88, 86)
+
+studentsData = data.frame(student_name, korean_midexam, math_midexam, eng_midexam)
+names(studentsData) = c("이름", "국어중간서적", "수학중간성적", "영어중간성적")
+
+studentsData$평균 = (studentsData[2] + studentsData[3] + studentsData[4]) / 3
+
+```
+
+<br>
+
+<br>
+
+# 5. dplyr
+
+dplyr은 여러 기능이 있는 패키지이나 주요 기능은 데이터 검색을 SQL처럼 사용할 수 있게 만드는 기능임
+
+dplyr을 제대로 쓰려면 최소한의 SQL 쿼리에 대한 지식이 필요
+
+
+
+## 5-1. 함수 목록
+
+| 함수        | 기능              |
+| ----------- | ----------------- |
+| filter()    | 행 추출           |
+| select()    | 열(변수) 추출     |
+| arrange()   | 정렬              |
+| mutate()    | 변수 추가         |
+| summarise() | 통계치 산출       |
+| group_by    | 집단별로 나누기   |
+| left_join() | 데이터 합치기(열) |
+| bind_rows() | 데이터 합치기(행) |
+
+<br>
+
+## 5-2. 파이프  연산자 (%>%)
+
+파이프 연산자의 단축키는 Ctrl + Shift + M 
+
+파이프 연산자는 왼쪽에서 오른쪽으로 읽을 수 있도록 만드는 연산자이다
+
+보통의 함수는 y = h(e(f(g(x)))) 이처럼 안에서 밖으로 읽어나가지만 파이프 연산자를 이용하면 밖에서 안으로 순차적으로 연산이 가능하다
+
+<br>
+
+```R
+x <- c(1, 2, 3, 4, 5)
+x <- 1:5 %<% c()
+```
+
+[관련 추가 자료](https://gomguard.tistory.com/243)
