@@ -39,6 +39,43 @@ a <- seq(1, 5)
 [1] "data.frame"
 ```
 
+<br>
+
+## 1-.3 변수의 형
+
+### 1-3-1. Numeric
+
+연속 변수(Continous Variable)는 연속적이고 크기를 의미하는 값으로 구성된 변수
+
+숫자가 크기를 지니기 때문에 양적 변수(Quantitative Variable)라고도 함
+
+
+
+### 1-3-2. Factor
+
+범주 변수(Categorical Variable)는 값이 대상을 분류하는 의미를 지닌 변수
+
+예를 들어 성별을 1,2 로 범주를 분류할 경우 이 1과 2는 크기를 의미하지 않으므로 산술연산은 불가능함
+
+명목 변수(Nominal Variable)라고도 부름
+
+
+
+### 1-3-3. 그 외
+
+integer(정수형), complex(복소수), character, logical, Date 등이 존재
+
+<br>
+
+## 1-4. 형 변환
+
+```R
+#as 함수 사용
+as.typename(variable)
+
+as.numeric(var)
+```
+
 <br><br>
 
 # 2. 데이터 프레임
@@ -218,7 +255,7 @@ summary(gapminder) #통계 요약
 
 <br>
 
-## 4-2. 데이터 열 다루기
+## 4-2. 데이터 열 이름 뽑아오기
 
 데이터 프레임에서 해당하는 열은 $ 혹은 인덱스 넘버 [number] 를 통해 선택할 수 있다.
 
@@ -248,3 +285,27 @@ tibble [1,704 x 6] (S3: tbl_df/tbl/data.frame)
  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
 ```
 
+## <br>
+
+## 4-3. 데이터 프레임 가공 및 추출
+
+R 및 파이썬의 데이터 가공은 큰 덩어리를 깎아나가는 이미지에 가까움
+
+네모난 석고상을 조각하면 조각할수록 그 이미지가 뚜렷해지는 것처럼 큰 덩어리의 데이터를 여러 함수나 연산자 등으로 필요한 정보만 추출함
+
+### 4-3-1. 열 선택하기
+
+방법은 크게 2가지로 $와 인덱스 넘버를 이용.
+
+```R
+#gapminder에서 country 값을 알고 싶을 경우
+## 1.
+unique(gapminder$country)
+#unique 함수는 중복값을 제거하는 함수
+
+## 2.
+unique(gapminder[1])
+
+```
+
+## 4-3-2. 
