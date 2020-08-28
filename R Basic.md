@@ -1,7 +1,6 @@
 # 1. 변수
 
 
-
 ## 1-1. 변수 할당 <-
 
 다른 프로그래밍 언어와는 달리 R에서 변수의 할당은 <- (화살표)를 사용함
@@ -20,7 +19,7 @@ a <- seq(1, 5)
 
 [c()에 관한 내용링크](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/c)
 
-
+<br>
 
 ## 1-2. 변수의 형 확인
 
@@ -40,9 +39,11 @@ a <- seq(1, 5)
 [1] "data.frame"
 ```
 
-
+<br><br>
 
 # 2. 데이터 프레임
+
+데이터 프레임에서 추출은 데이터 파악에 기술.
 
 ## 2-1. 선언
 
@@ -55,7 +56,7 @@ b2 <- c(55, 60, 45, 50)
 b <- data.frame(b1, b2)
 ```
 
-
+<br>
 
 ## 2-2. 열 이름(column name)  변경하기
 
@@ -74,7 +75,7 @@ b
 3       60       45
 4       70       50
 ```
-
+<br>
 
 
 ### 2-2-2. 개별 변경
@@ -86,7 +87,7 @@ b <- data.frame(b1, b2)
 
 names(b)[1] <- "한자성적"
 ```
-
+<br>
 
 
 ### 2-2-3.  열 이름 찾아 바꾸기 
@@ -100,7 +101,7 @@ names(b)[names(b) == "b1"] = "국어성적"
 ```
 
 [names() 함수 관련링크](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/names)
-
+<br>
 
 
 ### 2-2-4. rename() 함수
@@ -109,7 +110,7 @@ rename() 함수는 여러 패키지에 존재하지만 각각 문법이 다름
 
 [rename 관련 자료](https://rfriend.tistory.com/41)
 
-
+<br><br>
 
 # 3. 함수
 
@@ -143,7 +144,7 @@ calc = function(value1, value2) {
     return(result)
 }
 ```
-
+<br>
 
 
 ## 3-2. 함수의 사용 이유
@@ -184,7 +185,66 @@ result = calc(e, f)
 
 위처럼 같은 기능을 수행하는 명령어가 많으면 많아질수록 중복이 일어나게 되는데 함수를 사용하면 재사용이 용이해진다.
 
+<br><br>
 
+# 4. 데이터 파악
 
-# 4. 데이터 프레임
+## 4-1. 전체적인 데이터 파악하기
+
+| 함수      |          기능           |
+| --------- | :---------------------: |
+| head()    |   데이터 앞부분 출력    |
+| tail()    |   데이터 뒷부분 출력    |
+| View()    | 뷰어 창에서 데이터 확인 |
+| dim()     |    데이터 차원 출력     |
+| str()     |    데이터 속성 출력     |
+| summary() |    요약 통계량 출력     |
+
+```R
+library(gapminder)
+
+head(gapminder) #기본 값은 6줄 출력
+head(gapminder, 10) #10줄 출력
+
+tail(gapminder)
+tail(gapminder, 10) #뒤에서 10줄 출력
+
+View(gapminder) #DB의 View창과 개념이 비슷함
+dim(gapminder) #차원, 몇 행 몇 열인지를 출력함
+str(gapminder) #각 변수들의 형(type) 보여줌
+
+summary(gapminder) #통계 요약
+```
+
+<br>
+
+## 4-2. 데이터 열 다루기
+
+데이터 프레임에서 해당하는 열은 $ 혹은 인덱스 넘버 [number] 를 통해 선택할 수 있다.
+
+하지만 데이터에 어떤 열이 있는지 모를 때는 어떻게 해야할까?
+
+### 4-2-1. names() 이용
+
+```R
+library(gapminder)
+
+> names(gapminder)
+[1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"
+```
+
+<br>
+
+### 4-2-2. str() 이용
+
+```R
+> str(gapminder)
+tibble [1,704 x 6] (S3: tbl_df/tbl/data.frame)
+ $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+ $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
+ $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+```
 
