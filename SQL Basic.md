@@ -174,14 +174,16 @@ DESC student;
 
 INSERT INTO 명령어를 사용
 
+INSERT INTO 테이블명 (필드명1, 필드명2, 필드명3, ...) VALUES (필드값1, 필드값2, 필드값3, ...)
+
 INSERT INTO 테이블명 VALUES (필드값1, 필드값2, 필드값3, ...)
 
 ```MYSQL
 INSERT INTO student (studentNumber, name, midExam, finalExam, address)
-VALUE ('1A8B3EF', '홍길동', 80, 70, '부산시 해운대구');
+VALUES ('1A8B3EF', '홍길동', 80, 70, '부산시 해운대구');
 
+#해당 테이블 전체값 출력
 SELECT * FROM student;
-#결과값
 +---------------+--------+---------+-----------+-----------------+
 | studentNumber | name   | midExam | finalExam | address         |
 +---------------+--------+---------+-----------+-----------------+
@@ -189,7 +191,26 @@ SELECT * FROM student;
 +---------------+--------+---------+-----------+-----------------+
 ```
 
-<br>
+```MYSQL
+#또 다른 표기법 - student 뒤 필드명은 생략이 가능 (실수할 가능성이 있기에 권장하진 않음)
+INSERT INTO student VALUES ('2C8D5GA', '김하늘', 90, 55, '부산시 사상구');
+
+#또 다른 표기법 - 굳이 넣고 싶지 않은 필드명은 생략이 가능하다
+INSERT INTO student (studentNumber, name) VALUES ('8I9Z1DD', '기파랑');
+
+#해당 테이블 전체값 출력
+SELECT * FROM student;
+
++---------------+--------+---------+-----------+-----------------+
+| studentNumber | name   | midExam | finalExam | address         |
++---------------+--------+---------+-----------+-----------------+
+| 1A8B3EF       | 홍길동 |      80 |        70 | 부산시 해운대구 |
+| 2C8D5GA       | 김하늘 |      90 |        55 | 부산시 사상구   |
+| 8I9Z1DD       | 기파랑 |    NULL |      NULL | NULL            |
++---------------+--------+---------+-----------+-----------------+
+```
+
+
 
 ## 
 
