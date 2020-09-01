@@ -55,9 +55,9 @@ SHOW DATABASES;
 
 ## 2-2. Database 생성 및 삭제
 
-CREATE DATABASE 데이터베이스명;
+`CREATE DATABASE 데이터베이스명;`
 
-DROP DATABASE 데이터베이스명;
+`DROP DATABASE 데이터베이스명;`
 
 <br>
 
@@ -87,9 +87,9 @@ SHOW DATABASES;
 
 <br>
 
-## 2-3. Database 선택
+## 2-3. Database 선택 (USE)
 
-USE 데이터베이스명;
+`USE 데이터베이스명;`
 
 <br>
 
@@ -106,7 +106,7 @@ Database changed
 
 # 3. Table 조작
 
-## 3-1. Table 생성 
+## 3-1. Table 생성  (CREATE)
 
 ```MYSQL
 CREATE TABLE 테이블명(
@@ -138,11 +138,11 @@ CREATE TABLE student(
 
 <br>
 
-## 3-2. Table 확인하기
+## 3-2. Table 확인하기 (DESC)
 
-DESC 질의어를 사용 (describe의 약어)
+`DESC 질의어를 사용 (describe의 약어)`
 
-DESC 테이블명
+`DESC 테이블명`
 
 <br>
 
@@ -170,13 +170,13 @@ DESC student;
 
 <br>
 
-## 3-3. Table 값 넣기
+## 3-3. Table 값 넣기  (INSERT INTO)
 
-INSERT INTO 명령어를 사용
+`INSERT INTO 명령어를 사용`
 
-INSERT INTO 테이블명 (필드명1, 필드명2, 필드명3, ...) VALUES (필드값1, 필드값2, 필드값3, ...)
+`INSERT INTO 테이블명 (필드명1, 필드명2, 필드명3, ...) VALUES (필드값1, 필드값2, 필드값3, ...)`
 
-INSERT INTO 테이블명 VALUES (필드값1, 필드값2, 필드값3, ...)
+`INSERT INTO 테이블명 VALUES (필드값1, 필드값2, 필드값3, ...)`
 
 ```MYSQL
 INSERT INTO student (studentNumber, name, midExam, finalExam, address)
@@ -208,9 +208,48 @@ SELECT * FROM student;
 | 2C8D5GA       | 김하늘 |      90 |        55 | 부산시 사상구   |
 | 8I9Z1DD       | 기파랑 |    NULL |      NULL | NULL            |
 +---------------+--------+---------+-----------+-----------------+
+
+
+```
+
+<br>
+
+## 3-4. Table 값 보기 (SELECT)
+
+SELECT 필드명
+
+FROM 테이블명
+
+WHERE 조건;
+
+```MYSQL
+#에스터리스크(*)는 전부를 뜻함 => student 테이블에서 모든 필드명을 선택해서 봄
+SELECT * FROM student; 
+
+SELECT studentNumber, name FROM student;
++---------------+--------+
+| studentNumber | name   |
++---------------+--------+
+| 1A8B3EF       | 홍길동 |
+| 2C8D5GA       | 김하늘 |
+| 8I9Z1DD       | 기파랑 |
++---------------+--------+
+
+SELECT studentNumber, name, address FROM student WHERE midExam >= 50;
++---------------+--------+-----------------+
+| studentNumber | name   | address         |
++---------------+--------+-----------------+
+| 1A8B3EF       | 홍길동 | 부산시 해운대구 |
+| 2C8D5GA       | 김하늘 | 부산시 사상구   |
++---------------+--------+-----------------+
+
+SELECT name, midExam, finalExam FROM student WHERE name = '홍길동';
++--------+---------+-----------+
+| name   | midExam | finalExam |
++--------+---------+-----------+
+| 홍길동 |      80 |        70 |
++--------+---------+-----------+
 ```
 
 
-
-## 
 
