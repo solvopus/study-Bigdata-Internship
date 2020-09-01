@@ -216,11 +216,7 @@ SELECT * FROM student;
 
 ## 3-4. Table 값 보기 (SELECT)
 
-SELECT 필드명
-
-FROM 테이블명
-
-WHERE 조건;
+`SELECT 필드명 FROM 테이블명 WHERE 조건;`
 
 ```MYSQL
 #에스터리스크(*)는 전부를 뜻함 => student 테이블에서 모든 필드명을 선택해서 봄
@@ -251,5 +247,42 @@ SELECT name, midExam, finalExam FROM student WHERE name = '홍길동';
 +--------+---------+-----------+
 ```
 
+<br>
 
+## 3-5. Table 값 수정 (UPDATE)
+
+`UPDATE 테이블명 SET 필드1 = 데이터, 필드2 = 데이터, ..., WHERE 조건;`
+
+<br>
+
+```MYSQL
+UPDATE student SET midExam = 50 WHERE name = "홍길동";
+SELECT name, midExam, finalExam FROM student WHERE name = '홍길동';
++--------+---------+-----------+
+| name   | midExam | finalExam |
++--------+---------+-----------+
+| 홍길동 |      50 |        70 |
++--------+---------+-----------+
+```
+
+<br>
+
+## 3-6. Table 값 삭제 (DELETE)
+
+`DELETE FROM 테이블명 WHERE 조건;`
+
+<br>
+
+``` MYSQL
+DELETE FROM student WHERE name = '기파랑';
+
++---------------+--------+---------+-----------+-----------------+
+| studentNumber | name   | midExam | finalExam | address         |
++---------------+--------+---------+-----------+-----------------+
+| 1A8B3EF       | 홍길동 |      50 |        70 | 부산시 해운대구 |
+| 2C8D5GA       | 김하늘 |      90 |        55 | 부산시 사상구   |
++---------------+--------+---------+-----------+-----------------+
+```
+
+ 
 
