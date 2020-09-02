@@ -1,8 +1,10 @@
 # 참고자료
 
-[CSS Selector 관련 문법](https://www.w3schools.com/cssref/css_selectors.asp)
+[W3Schools - CSS Selector 관련 문법](https://www.w3schools.com/cssref/css_selectors.asp)
 
-[XML의 Element Tree 구조](https://www.w3schools.com/xml/xml_tree.asp)
+[W3Schools - XML의 Element Tree 구조](https://www.w3schools.com/xml/xml_tree.asp)
+
+[W3Schools - Xpath Syntax](https://www.w3schools.com/xml/xpath_syntax.asp)
 
 <br>
 
