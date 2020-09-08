@@ -457,12 +457,43 @@ x <- 1:5 %<% c()
 
 ## 5-3. filter()
 
+해당하는 데이터의 행을 추출한다
+
 ```R
 library(gapminder)
+library(dplyr)
 
 filter(gapminder, country == "France")
 
 # 파이프 연산자 사용 시
 gapminder %>% filter(country == "France")
 ```
+
+
+
+## 5-4. select()
+
+해당하는 데이터의 열을 추출한다
+
+SQL의 쿼리를 다룬 경험이 있다면 매우 익숙한 함수
+
+SQL과의 차이점은 WHERE 문으로 조건을 붙이는 SQL 쿼리와는 달리 조건은 다른 함수를 쓰고, select는 해당 데이터의 열만을 출력할 때 종종 쓰인다
+
+```R
+library(gapminder)
+library(dplyr)
+
+select(gapminder, country)
+
+#파이프 연산자 사용 시
+gapminder %>% select(country)
+
+
+```
+
+
+
+## 5-5. group_by
+
+집단별로 나누는 함수로 SQL의 group과 사용용도는 비슷하다
 
