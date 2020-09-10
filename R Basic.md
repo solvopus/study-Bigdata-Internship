@@ -411,15 +411,60 @@ studentsData$평균 = (studentsData[2] + studentsData[3] + studentsData[4]) / 3
 
 <br>
 
+### 4-3-4. 매칭 연산자(%in%)
+
+매칭 연산자 %in%은 ==과 비슷한 역할을 수행한다
+
+정확한 기능은 비교하는 데이터에 해당하는 값이 있는지 TRUE나 FALSE를 Return 하는 연산자이다
+
+== 과는 몇 가지 차이점이 있다
+
+<br>
+
+```R
+> 1:2 == c(1, 2)
+[1] TRUE TRUE
+> 1:2 == c(1, 2, 3, 4, 5, 1, 2)
+[1]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+경고메시지(들): 
+In 1:2 == c(1, 2, 3, 4, 5, 1, 2) :
+  두 객체의 길이가 서로 배수관계에 있지 않습니다
+> 1:2 == c(1,2,1,2,1,2)
+[1] TRUE TRUE TRUE TRUE TRUE TRUE
+> 1:2 == c(1,2,3,4,2,1,1,2)
+[1]  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE
+[8]  TRUE
+> 1:2 %in% c(1,2,3,4,2,1,1,2)
+[1] TRUE TRUE
+> 1:2 %in% c(3,4,1,2)
+[1] TRUE TRUE
+> 1:2 %in% c(3,4,2,1)
+[1] TRUE TRUE
+```
+
+==는 각 벡터의 값을 일일이 비교하여 논리 값을 리턴한다
+
+예를 들어 1:2 == c(1, 2, 3, 4, 2, 1) 는 11, 22, 13, 24, 12, 21 을 차례로 비교하며 길이가 배수관계가 아니면 비교가 불가능하다
+
+이와 반대로 %in%은 포함이 되어있는지만을 비교하므로 1:2 %in% c(2, 1) 은 11, 12, 21, 22 처럼 일일이 스칼라를 모두 비교하여 있으면 TRUE, 없으면 FALSE의 값을 리턴한다
+
+그렇기에 ==와는 달리 비교하려는 객체의 요소의 수와 리턴 값이 동일하다
+
+<br>
+
 <br>
 
 # 5. dplyr
+
+
 
 dplyr은 여러 기능이 있는 패키지이나 주요 기능은 데이터 검색을 SQL처럼 사용할 수 있게 만드는 기능임
 
 dplyr을 제대로 쓰려면 최소한의 SQL 쿼리에 대한 지식이 필요
 
+이름의 유래는 db 플라이어의 줄임말이다
 
+<br>
 
 ## 5-1. 함수 목록
 
@@ -469,7 +514,7 @@ filter(gapminder, country == "France")
 gapminder %>% filter(country == "France")
 ```
 
-
+<br>
 
 ## 5-4. select()
 
@@ -488,12 +533,17 @@ select(gapminder, country)
 #파이프 연산자 사용 시
 gapminder %>% select(country)
 
+#filter()와 연동
+gapminder %>% filter(country == "France") %>% select(country, year, lifeExp)
+select(filter(gapminder, country == "France"), country, year, lifeExp) #위 식과 같음
 
 ```
 
 
 
+<br>
+
 ## 5-5. group_by
 
-집단별로 나누는 함수로 SQL의 group과 사용용도는 비슷하다
+집단별로 나누는 함수로 SQL의 group by와 사용용도는 비슷하다
 
